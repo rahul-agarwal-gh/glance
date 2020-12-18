@@ -1,9 +1,11 @@
 import React from "react"
+import ImageCard from "./ImageCard"
 import "./styles/ImageList.css";
-const ImageList = ({images}) => {
+
+const ImageList = ({images, imageTitles, imageDescs}) => {
 
     const renderedImages = images.map( (imgURL, index) => {
-        return <img key={index} src={imgURL} />
+        return <ImageCard key={index} source={imgURL} title={imageTitles[index]} desc={imageDescs[index]}/>
     })
     
     return (
@@ -12,3 +14,4 @@ const ImageList = ({images}) => {
 }
 
 export default ImageList
+

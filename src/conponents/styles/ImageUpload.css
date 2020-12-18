@@ -2,58 +2,75 @@ html, body{
     margin: 0%;
 }
 
-/* .div-main{
-    display: inline-block;
-    background-color: #cd5d7d;
-    width: 100%;
-    height: 100vh;
-} */
-
-/* .title-div{
-    width: 100%;
-    text-align: center;
-    background-color: #f6ecf0;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-}
-.title{
-    font-family: 'B612', sans-serif;
-    text-align: center;
-    font-size: 2em;
-    color: #654062;
-} */
-
 .img-upload-top-class{
     height: 100vh;
-    background-color: rgb(192, 157, 157);
+    background-color: #52a2ba;
 }
 .img-view-top-class{
     height: 100vh;
-    background-color: rgb(163, 157, 192);
+    background-color: #fefcf8;
 }
 
 .app-title-box{
     width: 100%;
     text-align: center;
-    background-color: #f6ecf0;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
 }
 .app-title-text{
-    font-family: 'B612', sans-serif;
+    font-family: "roboto condensed";
     text-align: center;
     font-size: 2em;
-    color: #654062;
+    color: white;
 } 
 
 #select-instruction{
-    font-family: 'B612', sans-serif;
+    font-family: 'roboto';
     text-align: center;
-    background-color:blueviolet;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    color: black
 }
 
-.img-upload-btn{
-    /* code to style choose file */
+.ui.input{
+    display: block;
+    margin-top: 2%;
+}
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #e0e0e0;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #e0e0e0;
+    font-family: "verdana";
+}
+
+.copyright{
+    color: white;
+    font-family: "verdana";
+    font-size: 20px;
+}
+
+.your-img{
+    padding-top: 10%;
+    font-family: "verdana";
+    font-size: 50px;
+    color: darkslateblue;
+}
+
+.prvwFrame{
+    margin-top: 20px;
+    font-family: "verdana";
+    color: whitesmoke;
+    border: 2px whitesmoke dashed;
+    border-radius: 4px;
+    text-align: center;
+    padding-top: 10%;
+    padding-bottom: 10%;
 }
