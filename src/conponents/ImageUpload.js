@@ -1,8 +1,21 @@
 import React, {useEffect, useState} from "react"
 import axios from "axios"
-import "./ImageUpload.css"
+import "./styles/ImageUpload.css"
+//Material UI Button
+import { Grid, Container, Button, Input } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { CloudUpload, Delete, DeleteSweepOutlined } from '@material-ui/icons/';
+
+const useStyles = makeStyles((theme) => ({
+    button: {
+      margin: theme.spacing(1),
+    },
+  }));
+
   
 const ImageUpload = () => {
+
+    const classes = useStyles(); //for MUI
 
     const [img, setImg] = useState(null) 
     const [imgURL, setImgURL] = useState('')
@@ -38,13 +51,28 @@ const ImageUpload = () => {
     return (
         <React.Fragment>
             <div className="div-main">
-            <div className="title">Image Upload</div>
+            <div className="title-div"><span  className="title">Image Upload</span></div>
             <form onSubmit={e => onFormSubmit(e) }>
-                <label for="img">Select image:</label>
-                <input type="file" id="img" name="img" accept="image/*" onChange={ e => onImageUpload(e)}/>
-                <input type="submit" value="Upload"></input>
+                <h3>Select Image</h3>
+                {/* <input type="file" id="img" name="img" accept="image/*" onChange={ e => onImageUpload(e)}/> */}
+                <Input type="file" id="img" name="img" accept="image/*" onChange={ e => onImageUpload(e)} />
+                {/* <input type="submit" value="Upload"></input> */}
+                <Button
+                    variant="contained"
+                    color="default"
+                    className={classes.button}
+                    startIcon={<CloudUpload />} 
+                    type="submit"
+                >Upload</Button>
             </form>
-            <button onClick={onRemoveClick}>Remove Image</button>
+            {/* <button onClick={onRemoveClick}>Remove Image</button> */}
+            <Button
+                variant="contained"
+                color="default"
+                className={classes.button}
+                startIcon={<Delete />} 
+                onClick={onRemoveClick}
+            >Remove Image</Button>
             <img src={img} />
             </div>
         </ React.Fragment>
