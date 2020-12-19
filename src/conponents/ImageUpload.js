@@ -136,7 +136,7 @@ const ImageUpload = () => {
                                         <span class="header">{imageTitle}</span>
                                         <div class="description">{imageDesc}</div>
                                     </div>
-                            </div> </div>: <div className="prvwFrame">A Preview of Your Choosen Images will be shown here</div>}
+                            </div> </div>: <div className="prvwFrame">A Preview of Your Choosen Image will be shown here</div>}
                         </Container>
                         </Grid>
                     <Grid item xs={9}  className="img-view-top-class">
