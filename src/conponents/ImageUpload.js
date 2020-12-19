@@ -25,7 +25,7 @@ const ImageUpload = () => {
     
     const classes = useStyles(); //for MUI
 
-    const [img, setImg] = useState(null) //this state is used to store src of preview <img>
+    const [img, setImg] = useState('') //this state is used to store the preview <img> (file object)
     const [imgURL, setImgURL] = useState('') //URL.creatObjectURL() creates a temp local URL that is tied to the doc in which it is created 
     //This URL can be used to set the the src property of a preview <img/> element. This state stores the url that will go inside src
     
@@ -48,28 +48,28 @@ const ImageUpload = () => {
 
     const onImageUpload = (e) => {      //called when user have choosen the image
         //e.target.files[0] will be a file object with details of uploaded file like name, lastModified etc. It does not contain any src
-        setImgURL(e.target.files[0])
-        setImg(URL.createObjectURL(e.target.files[0]))//img state will now contain a url of our selected image
+        setImgURL(URL.createObjectURL(e.target.files[0]))
+        setImg(e.target.files[0])//img state will now contain a url of our selected image
     }
 
     const onRemoveClick = (e) => {
-        if(imgURL === '')
+        if(img === '')
             return alert("No Image to Remove")
-        setImgURL('')
-        setImg(URL.revokeObjectURL(img))
+        setImgURL(URL.revokeObjectURL(img))
+        setImg('')
         setImageTitle('')
         setImageDesc('')
     }
     const onFormSubmit = async (e) => {
         e.preventDefault()
 
-        if(imgURL === ''){
+        if(img === ''){
             return alert("No Image Selected to Upload")
         }
 
         setLoading(true)
         const formData = new FormData()
-        formData.append('image', imgURL)
+        formData.append('image', img)
         const config = {
             headers: {
                 'Authorization': "Client-ID d9beedee590d93a"
@@ -78,8 +78,8 @@ const ImageUpload = () => {
         const res = await axios.post('https://api.imgur.com/3/image', formData, config)   
         if(res.data){
             setLoading(false)
-            setImgURL('')
-            setImg(URL.revokeObjectURL(img))
+            setImgURL(URL.revokeObjectURL(img))
+            setImg('')
             setImageTitle('')
             setImageDesc('')
             setUploadedImages([...uploadedImages, res.data.data.link])
@@ -127,10 +127,10 @@ const ImageUpload = () => {
                         </Container>
                         <Container>
                             {loading ? <div><br /> <Spinner /> <br /> </div>: null}
-                            {imgURL !== '' ? <div><span style={{color: "whitesmoke", fontFamily: "verdana"}}>Preview</span>
+                            {img !== '' ? <div><span style={{color: "whitesmoke", fontFamily: "verdana"}}>Preview</span>
                                 <div class="ui card">
                                     <div class="image">
-                                        <img src={img} alt='' />
+                                        <img src={imgURL} alt='' />
                                     </div>
                                     <div class="content">
                                         <span class="header">{imageTitle}</span>
